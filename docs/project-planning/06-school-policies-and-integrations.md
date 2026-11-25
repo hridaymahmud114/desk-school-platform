@@ -1,0 +1,46 @@
+# School policies ও integrations
+
+Pilot school-এর approved policy ব্যবহার করেই attendance, grading, fees, school access ও notifications verify হবে। প্রতিটি policy-তে school, version, effective date, owner, approver, example ও exception থাকবে। Policy বদলালে আগের published result বা issued invoice-এর rules trace করা যাবে।
+
+## School policy pack
+
+| Policy | কী agree হবে | Test example |
+|---|---|---|
+| **Academic setup** | Year, term, grade, section, calendar, subjects, teacher assignment ও timetable | Section move ও cover effective date মেলে। Old history থাকে। |
+| **Grading ও publication** | Category weights, rounding, absent/exempt/missing rules, review, approval, correction ও report version | School-এর agreed marks sheet থেকে একই result বের হয়। |
+| **Early years** | Rubric ও observation, guardian view, media consent এবং শিশুদের login timing | Narrative report-এ numeric marks আসে না। |
+| **Attendance ও custody** | Present/late/absent rules, correction, alerts, authorized pickup ও per-child guardian rights | Corrected entry-তে history থাকে এবং right guardian update পান। |
+| **School ও course fees** | Price, installment, credit, discount, bank verification, cash up, refund approvals এবং daily closing | দুই fee books মেলে। Unverified payment pending থাকে। |
+| **Subscriptions** | Product-wise plan, active pupil/learner usage, invoicing, grace, restriction ও export | একটি product toggle করলে অন্য product ও school data ঠিক থাকে। |
+| **Communication** | Template, language, safe preview, opt-in, SMS-only guardian, quiet hours ও emergency channels | Correct guardian একটি notice পান এবং sensitive details app-এর ভিতর থাকে। |
+| **Privacy ও retention** | Purpose, child consent, file retention, support consent, audit, export ও deletion | Role revoke, consent update এবং scoped support session verify হয়। |
+
+## Provider ও readiness register
+
+| Integration | Baseline | কোন তথ্য বা evidence লাগবে |
+|---|---|---|
+| **Payment gateway** | একটি aggregator দিয়ে শুরু। Market ও agreement অনুযায়ী bank/cash flows। | Provider owner, sandbox ও live credentials-এর safe location, verification rules, currency, settlement, cancellation, refund ও fallback। |
+| **SMS, push ও email** | Common provider interface, language templates ও channel fallback। | Sender/region approval, test numbers, costs, delivery logs, retry/duplicate handling এবং outage route। |
+| **Moodle** | R2 connected mode ও R3 course migration। Pilot school Moodle রাখলে D-01 অনুযায়ী প্রয়োজনীয় R1 connection। | Supported versions, user/course/assessment mapping, sync delay, conflict report, retry এবং school-owned official result flow। |
+| **Learning content ও live meeting** | R2 meeting link। R3 supported H5P, SCORM ও LTI coverage। | Version/permission matrix, sample course এবং completion ও marks evidence। |
+| **Hosting ও backup** | Foundation-এ region ও service level confirm হবে। | Client decision, local legal input, access/retention, restore region ও service owner। |
+| **App distribution** | দুটি Desk School listing। School branding login-এর পরে। | Google/Apple owner, review readiness, build evidence, privacy details ও release account। |
+| **Future plugins** | School অনুযায়ী module বা provider activate হবে। | Module dependencies, data access, scopes, version, limits, deactivation effect ও audit owner। |
+
+Provider register-এ owner ও due date, test-ready/live-ready status, cost, contract, fallback, data handling ও evidence link থাকবে। Credentials secret storage-এ থাকবে। Planning doc-এ credential owner ও reference থাকবে।
+
+## Blueprint decision references
+
+| Decisions | কী track হবে |
+|---|---|
+| **D-01, D-02** | Pilot Moodle ব্যবহার করবে কি না, এবং Moodle 5.1 parity baseline। |
+| **D-03, D-04, D-05** | Hosting ও data location, payment route এবং identity baseline। |
+| **D-06, D-07, D-08** | App Store listing, SMS account ও pricing/usage plan। |
+| **D-09, D-10, D-11** | Accounting ও payroll depth, pilot policies, sensitive data এবং GPS/AI timing। |
+| **D-12, D-13, D-14** | Language/calendars, AISE source exclusion in Blueprint এবং launch size/service tier। |
+| **D-15, D-16, D-17, D-18** | Admissions timing, young pupil accounts, ownership/licences এবং six-week staging estimate। |
+| **D-19, D-20, D-21** | দুই product আলাদা, pricing/billing আলাদা, external learners R2 থেকে। |
+
+Decision বদলালে old value, new value, approver, effective date, affected IDs ও release impact [scope index](README.md) এবং tracker-এ থাকবে। Pending client input-এর প্রমাণ [deliverables tracker](tracker/deliverables.csv)-এ link হবে।
+
+Source coverage Blueprint পৃষ্ঠা ২৭–৩৩, ৩৫–৩৭, ৪০–৪৫, ৫১–৫৫, ৬৩–৬৪, ১০৪–১০৬।
