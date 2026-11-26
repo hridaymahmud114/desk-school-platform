@@ -142,7 +142,7 @@ External provider, optional feature ও future plugin-এর আলাদা int
 | Student ও placement history | Student Records A8 | A2 class list ও teaching group-এ effective dates ধরে roster দেখাবে। Registrar placement change করবেন। |
 | Subject, teacher assignment ও class session | Academics A3, A5 ও A6 | Attendance-এ current roster, Results-এ teacher scope, Desk Learn-এ optional class linkage |
 | Attendance records | Attendance A9 | Notice delivery event, guardian day view এবং published attendance reports |
-| School marks ও official result | Assessment ও Results A10–A12 | Review ও approval শেষে published snapshot। Correction হলে version history থাকবে। |
+| School marks ও official result | Assessment ও Results A10–A12 | Subject Teacher submit করেন, Academic Lead review করেন, Principal approve করেন। School Admin approved snapshot থেকে report card release করেন। Correction-এ পুরোনো version থাকে। |
 | Course content, enrollment ও marks | Desk Learn B2–B7 এবং B11 | Class link on থাকলে শুধু school-selected activity marks Results-এ যাবে। Independent course-এর নিজস্ব gradebook থাকবে। |
 | School invoice ও course invoice | A16 এবং B13 | Shared payment integration ব্যবহার করবে। পৃথক invoice series, ledger ও closing থাকবে। |
 | School subscription | Platform C1 ও C2 | Product usage ও billing state থেকে entitled actions। Student-এর official result access agreed policy অনুসরণ করবে। |

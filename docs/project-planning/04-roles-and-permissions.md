@@ -4,25 +4,26 @@
 
 ## Role matrix
 
-| Role | Allowed scope | মূল কাজ | Approval বা access limit |
+| Role | Allowed scope | মূল কাজ | যে কাজ আটকে থাকবে বা আলাদা approval লাগবে |
 |---|---|---|---|
 | **Super Admin** | Platform operators-এর school ও plan scope | School provision, plan, product lifecycle, usage এবং operator reports | School records দেখতে scoped support session লাগবে |
 | **Platform Support** | Approved school, issue ও সময় | অনুমতি নিয়ে case-specific support | School consent বা logged emergency approval, expiry ও audit প্রয়োজন |
-| **School Owner বা Principal** | School এবং তাঁর অনুমোদিত campuses | Result approval, school summary, key approvals, emergency notice | Finance/HR access role ও policy অনুযায়ী |
-| **School Admin** | নিজের school ও assigned campuses | School setup, staff roles, calendar, policy settings ও notices | Privileged grant ও critical policy change-এ approval |
-| **Registrar** | Assigned school বা campus | Registration, import, guardian link, placement ও record changes | Custody restriction ও historical changes review করা হয় |
-| **Department Head** | Assigned departments, subjects ও grades | Curriculum, lesson review এবং teacher oversight | অন্য department scope আলাদা করে grant হবে |
-| **Academic Lead** | Assigned grades ও classes | Marks review, exception ফেরত দেওয়া ও approval queue | Official publish agreed Principal role-এর |
-| **Exam Officer** | Assigned exam, term ও campus | Exam setup, seating, duty, candidates ও paper management | Secure paper ও result actions আলাদা scoped grants |
-| **Class Teacher** | নিজের homeroom বা assigned classes | Class attendance, daily summary, overall comments ও guardian communication | Closed register correction reason ও approval দরকার |
-| **Subject Teacher** | Assigned teaching groups ও subjects | Routine, lesson plan, marks, class sessions ও course links | নিজের assigned scope-এর বাইরে access school grant অনুযায়ী |
+| **School Owner / Director** | নিজের school, অনুমোদিত campuses | Principal-এর school view, plan, subscription ও owner approval। Privileged role grant, approval policy ও retention policy approve করেন। | Operator functions বন্ধ। Group grant ছাড়া অন্য school-এর access বন্ধ। Retention-এ market অনুযায়ী counsel review। |
+| **Principal** | নিজের school ও assigned campuses | School summary, emergency alert, result ও published correction approve, policy অনুযায়ী finance approval | আলাদা finance role ছাড়া শুধু payment totals। Individual payment detail ও operator functions বন্ধ। Report card release করেন School Admin। |
+| **School Admin** | নিজের school ও assigned campuses | Setup, users, timetable, notices ও audit। Principal-এর approval-এর পর report card তৈরি ও release। | Marks বা ledger entry বদলানো বন্ধ। Privileged role-এ Owner approval ও second factor লাগে। আলাদা learning role ছাড়া course খোলা বন্ধ। |
+| **Registrar** | Assigned school বা campus | Registration, import, household, guardian rights, placement ও field-limited export। R2-তে approved result দেখে promotion। | Marks entry, ledger ও health detail বন্ধ। Custody restriction-এ document ও দ্বিতীয় approver লাগে। |
+| **Department Head** | Assigned department | Subjects, schemes, lesson review ও coverage | অন্য department বা submission-এর আগের marks দেখা বন্ধ, ওই subject-এর নিজস্ব teacher হলে নিজের marks দেখতে পারবেন। |
+| **Academic Lead** | Assigned grades ও classes | Missing marks ও ব্যতিক্রম review করে ফেরত দেন বা Principal-এর approval-এ পাঠান। | Fees, HR ও অন্য grade band বন্ধ। |
+| **Exam Officer** | Assigned exam, term ও campus | Exam setup, seating, duty, candidates ও paper custody | Locked paper-এর content দেখা ও marks বদলানো বন্ধ। |
+| **Class / Homeroom Teacher** | নিজের homeroom ও assigned classes | Attendance summary, follow-up, comments ও family communication | নিজে ওই subject-এর teacher না হলে subject submit হওয়ার আগে তার marks দেখা বন্ধ। Closed register correction-এ approval লাগে। |
+| **Subject Teacher** | Assigned teaching groups ও subjects | Register, lesson plan, marks entry, correction ও subject submit | অন্য class, fees ও বিস্তারিত health/safeguarding record বন্ধ। শুধু প্রয়োজনীয় alert flag দেখা যায়। |
 | **Substitute বা Delegate** | নির্দিষ্ট period, class ও সময়সীমা | Cover session, approved attendance বা অন্য granted actions | Access time-bound এবং revoke করা যায় |
-| **Finance Officer** | Assigned school/campus এবং fee books | Bill, settlement, adjustment, reconciliation ও refund request | Policy threshold-এর ওপরে separate approver |
-| **Cashier** | Assigned cash counter ও shift | Cash payment, receipt, shift closing | Posted receipt change হলে audit ও correction process |
-| **Learning Admin** | School Desk Learn workspace | Courses, instructors, enrollments ও pricing | Course role assign ও policy settings agreed control অনুযায়ী |
-| **Course Instructor বা Assistant** | Assigned course ও allowed activities | Content, assignment, quiz, marks ও course progress | Role-specific edit or view। Outside instructors course scope-এ থাকবেন। |
-| **Student** | নিজের official records এবং active courses | Routine, saved lessons, assignments, quiz, published marks ও fees view যেখানে enabled | Age অনুযায়ী messaging ও discovery সীমিত |
-| **Guardian** | Linked child ও ওই child-এর granted rights | Attendance, notice, result, fees, receipts, consent ও messages | Custody ও permissions child-by-child। Access বদলালে scope আবার check হবে। |
+| **Finance Officer** | School fees ও course fees-এর আলাদা workspace | Bill, bank claim verification, reconciliation ও refund request | অন্য product-এর book এই workspace থেকে খোলা যাবে না। Academic data-তে শুধু নাম ও class। নিজের request approve করা বন্ধ। |
+| **Cashier** | নিজের counter ও shift | Cash payment, receipt ও shift closing | অন্য shift, posted receipt edit ও reduction বন্ধ। Difference supervisor দেখবেন। |
+| **Learning Admin** | নিজের Desk Learn workspace | Catalogue, instructor, enrollment, pricing ও learning reports | School student records, attendance, official results ও school fees বন্ধ। |
+| **Course Instructor বা Assistant** | Assigned course ও granted activities | Content, assignment, quiz, course marks ও progress | বাইরের instructor স্কুলের record খুলতে পারবেন না। Class teacher ও instructor grant আলাদা করে চালু ও শেষ হবে। |
+| **Student** | নিজের school view ও active courses | Routine, lesson, quiz, feedback ও released marks | অন্য pupil-এর কাজ, marks বা people directory বন্ধ। School অনুমতি দিলেই fees দেখা যায়। |
+| **Guardian** | Linked child ও সেই child-এর granted rights | Attendance, notice, published result, fees, receipts, consent ও messages | অন্য child, staff-only notes ও custody restriction-এ বন্ধ করা data দেখা যায় না। Rights প্রতি child-এ আলাদা করে test হবে। |
 
 ## পরের release-এর roles
 
@@ -38,6 +39,6 @@ Admission staff R2-এ applications ও offers সামলাবেন। Appro
 
 ## Permission review checklist
 
-প্রতিটি workflow-এর জন্য actor, requested action, school, product, campus, target record, allowed roles ও required approval লিখতে হবে। Check করুন actor নিজের school-এ কাজটি করতে পারে, অন্য demo school-এ scope সীমা কাজ করে, same-school অন্য class/child-তেও scope ঠিক থাকে এবং revoked বা expired account প্রত্যাশিত access পায়। V01, V02, V03, V04 এবং V15-এর evidence [QA plan](07-qa-pilot-and-acceptance.md)-এ যাবে।
+প্রতিটি workflow-এর জন্য actor, requested action, school, product, campus, target record, allowed roles ও required approval লিখতে হবে। Check করুন actor নিজের school-এ কাজটি করতে পারে, অন্য demo school-এ scope সীমা কাজ করে, same-school অন্য class/child-তেও scope ঠিক থাকে এবং revoked বা expired account প্রত্যাশিত access পায়। প্রতি role-এর allowed ও blocked case একই user context-এ চালানো হবে। দ্বিতীয় role আলাদা করে দিলে তার আগের ও পরের ফলও রাখা হবে। V01, V02, V03, V04 এবং V15-এর evidence [QA plan](07-qa-pilot-and-acceptance.md)-এ যাবে।
 
 Source coverage Blueprint পৃষ্ঠা ২৫–৩৪, ৯৮, ১০২–১০৩।

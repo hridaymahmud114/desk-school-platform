@@ -8,7 +8,7 @@ Client delivery trace করার পথ হলো **requirement → feature �
 |---|---:|---|
 | [requirements.csv](tracker/requirements.csv) | ৩৮২ | Requirement ID, Blueprint summary, page, disposition ও client review status |
 | [features.csv](tracker/features.csv) | ৫৪১ | Feature ID, module, system, product, Blueprint release, proposed MVP scope, test refs ও implementation evidence |
-| [requirement-links.csv](tracker/requirement-links.csv) | ৯৪৫ | Requirement থেকে feature বা deliverable-এর links। Appendix D, Part 2 এবং planning review link আলাদা করে চিহ্নিত |
+| [requirement-links.csv](tracker/requirement-links.csv) | ৯৪৭ | PDF-এর Appendix D ও Part 2-তে মেলা ৯০৪টি feature link, planning review-এর ৭টি feature link ও ৩৬টি deliverable link |
 | [deliverables.csv](tracker/deliverables.csv) | ২২ | Data model, design, QA, environment, migration, restore, training, commercial ও launch work |
 
 Excel বা spreadsheet-এ import করার সময় **Requirement ID, Feature ID এবং Deliverable ID text হিসেবে** রাখুন। `18.1.6` ও `E2E-05`-এর মতো ID join করার জন্য একই format দরকার। Filter করতে system, module, release ও proposed scope columns ব্যবহার করা যাবে।
@@ -24,7 +24,7 @@ Excel বা spreadsheet-এ import করার সময় **Requirement ID, Fea
 
 Blueprint release সবসময় source baseline হিসেবে থাকবে। Approved timing বদলালে **Approved target release override** এবং **Decision reference**-এ লিখতে হবে। MVP candidate-এর final selection pilot school-এর কাজ ও client scope অনুযায়ী approve হবে। ৩৬টি *Added from practice* feature origin দিয়ে filter করা যাবে। Approval status ও origin আলাদাভাবে track হবে।
 
-Implementation status হবে evidence অনুযায়ী। **Needs repository verification**, **Planned**, **In progress**, **Ready for QA**, **Verified** এবং **Client accepted** ব্যবহার করা যাবে। Repo-তে code পাওয়া, test pass হওয়া ও client acceptance তিনটি আলাদা update। Partial feature-এর remaining checks শেষ হলে পুরো feature complete ধরা যাবে। Assigned owner, PR বা build এবং test evidence যতগুলো বাস্তবে পাওয়া যায় tracker-এ বসবে।
+Implementation status হবে evidence অনুযায়ী। **Needs repository verification**, **Planned**, **In progress**, **Ready for QA**, **Verified** এবং **Client accepted** ব্যবহার করা যাবে। Repo-তে code পাওয়া, test pass হওয়া ও client acceptance তিনটি আলাদা update। ২৬টি partial row-তে `MVP slice status` ও `MVP slice evidence` দিয়ে pilot অংশ track হবে। `R1 remainder status` ও `R1 remainder evidence` দিয়ে বাকি অংশ track হবে। দুই অংশের evidence মেলার পরে পুরো row Verified করা যাবে। অন্য scope-এর row-তে এই চারটি field খালি থাকবে। Assigned owner, PR বা build এবং test evidence যতগুলো বাস্তবে পাওয়া যায় tracker-এ বসবে।
 
 ## Blueprint mapping review
 
@@ -37,7 +37,11 @@ Appendix D-এর ১৩টি item-এ সরাসরি Feature ID ও releas
 | `SIS-009` → A2 → V11 ও V22 | R1 section move এবং পুরো campus move-এর আলাদা sample, timing decision সহ। |
 | School ও course fees → `PRD-005`, `CFE-002`, `CFE-005` → V09 | আলাদা invoice, receipt ও books। একটির payment-এ অন্যটির balance বদলায় না। |
 
-**Source test IDs** column-এ Blueprint Appendix B-এর direct test refs আছে যেখানে দেওয়া হয়েছে। **Suggested verification IDs** হলো system-level planning refs। এগুলো দিয়ে feature-specific acceptance checks বানানো যাবে।
+**Source test IDs** Appendix B-তে দেওয়া সরাসরি refs। **Suggested verification IDs** আমাদের feature ধরে বেছে নেওয়া প্রাসঙ্গিক tests। কোনো named test আংশিক coverage দিতে পারে। প্রতিটি row-এর **Feature acceptance case** (যেমন `G5/INV-001`) দিয়ে তার পুরো wording-এর demo, expected result ও evidence রাখা হবে। Suggested field খালি থাকলেও ওই case প্রযোজ্য। একাধিক gate-এ প্রমাণ লাগলে QA plan-এর stage-ও প্রযোজ্য (যেমন SIS-009 ও V22)।
+
+**Baseline decision IDs** দেখায় Blueprint-এর কোন নির্দিষ্ট decision ওই feature-কে সরাসরি প্রভাবিত করে। Project-wide D-13, D-17 ও D-18-এর scope, ownership ও timeline project index, commercial deliverable এবং release plan-এ থাকবে। **Decision reference** ও **Approved target release override** কেবল অনুমোদিত change-এর জন্য। এই দুই field খালি থাকলে Blueprint release-ই কার্যকর।
+
+৩৮২টি summary ও ৫৪১টি feature Blueprint ধরে যাচাই করা হয়েছে। Client-এর original SRS পেলে `DVL-001`-এ exact wording মেলানো হবে। Blueprint-এর V-tests ও X-scenarios, decision baseline, এবং আমাদের MVP/branch planning-এর origin আলাদা। [QA plan](07-qa-pilot-and-acceptance.md)-এ X-01–X-10-এর status ও evidence row আছে।
 
 ## Release review
 

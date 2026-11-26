@@ -7,14 +7,16 @@
 | Phase | কাজ | কী চালিয়ে দেখাতে হবে |
 |---|---|---|
 | **Foundation** | Existing backend ও app skeleton check। Tenant, role, student ও class rules agree। দুই demo school ও sample users। | দুই school-এ অনুমোদিত data দিয়ে ছোট school flow চলে। Access checks, product toggle এবং old history verify হয়। |
-| **MVP school day** | Registration/import → class placement → teacher routine → offline attendance → guardian notice। | Offline register reconnect-এ একবারই submit হয়। Class বদলালে access ও history ঠিক থাকে। Notice সঠিক guardian পান। |
+| **MVP school day** | Registration/import → class placement → teacher routine → offline attendance → guardian notice। | Offline register reconnect-এ একবারই submit হয়। প্রথম placement (SIS-003) অনুযায়ী roster ও access ঠিক থাকে। Notice সঠিক guardian পান। |
 | **MVP result money ও learning** | Exam → marks → approval → report card। Invoice → verified payment → receipt → closing। Course → enrollment → lesson → assignment/quiz → progress। | সঠিক result, আলাদা school/course ledgers ও independent course। Class link চালু করলে selected marks official gradebook-এ যায়। |
 | **R1 completion ও pilot** | MVP partials ও remaining R1 scope, apps, language, backup, payment, security, performance, device tests ও training। | Staging checks ও বাস্তব pilot term-এর attendance, coursework, result ও fees cycle পাস। |
 | **R2–R5** | Admissions ও year cycle, learning depth, school operations এবং full accounting, scale ও AI। | প্রতিটি release-এর [acceptance evidence](07-qa-pilot-and-acceptance.md), rollout dependency ও handover। |
 
 Tracker অনুযায়ী MVP প্রস্তাবে **১৩৮টি candidate + ২৬টি partial = ১৬৪টি feature row**, ৩৬টি module-এর মধ্যে। আরও **৫২টি R1 backlog**, এবং ২৬টির remaining checks পূর্ণ R1-এ track হবে। **১৭টি module** প্রথম MVP-এর বাইরে। A13–A15, A18–A28, B9, B15 এবং C7। Early Years-এর A14-তে R1 কাজ আছে এবং pilot-এ KG থাকলে relevant অংশ আগে আসবে। Moodle-সহ pilot হলে D-01 অনুযায়ী B15-এর প্রয়োজনীয় connection কাজ R1-এ review হবে। [Feature tracker](tracker/features.csv)
 
-Blueprint-এর ৬ সপ্তাহ staging build ও handover-এর planning target। Live pilot term school calendar, store review ও external readiness-এর ওপর চলবে। Team estimate actual backend verification-এর পর বসবে।
+SIS-009 প্রথম MVP-এর পরের R1 backlog-এ আছে। G1-এ section বদলের কার্যকর তারিখ থেকে marks, attendance ও access ঠিক থাকতে হবে। G2-তে পুরো campus transfer-এর history দেখাতে হবে। PDF inventory-তে feature-এর R1 label এবং E2E-07-এর দুই gate পাশাপাশি track হবে।
+
+D-18 অনুযায়ী [client inputs](06-school-policies-and-integrations.md#client-inputs) হাতে আসার দিন থেকে Foundation ও R1–R5 মিলে staging handover পর্যন্ত আনুমানিক ৬ সপ্তাহ। Team backend দেখে আলাদা estimate নথিভুক্ত করবে। অনুমোদিত পরিবর্তন হলে baseline, কারণ ও প্রভাব পাশাপাশি থাকবে। Live pilot term school calendar-এ চলে। Store, providers ও external review-এর evidence নিজ নিজ gate-এ লাগবে।
 
 ## সব system-এর প্রথম feature branch
 

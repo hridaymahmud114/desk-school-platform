@@ -15,11 +15,11 @@ School data import, release readiness এবং client handover এক plan-এ 
 | Check | Owner area | Evidence |
 |---|---|---|
 | **Scope ও permissions** | Product, QA ও platform | Approved MVP/R1 list, remaining backlog, tenant/role checks, support access ও module toggles |
-| **Build ও deployment** | Platform ও app/web | Staging build, environment setup, release version, rollout/rollback rehearsal এবং store review status |
+| **Build ও deployment** | Platform ও app/web | Staging ও production-এ একই signed build-এর ID, approval ও deployment record। Rollback-এ data loss শূন্য, test alert ও incident drill-এর প্রমাণ (V19)। Store review status আলাদা। |
 | **Provider readiness** | Finance, platform ও client | Payment verification ও payout path, SMS fallback, provider contracts, support contacts ও cost |
 | **Data ও infrastructure** | Registrar, finance ও operations | Import totals, backup/restore test, record retention এবং isolated single-school recovery |
 | **User readiness** | School lead ও product | English/Amharic guides, teacher/office/guardian training, support contact ও pilot schedule |
-| **Pilot ও sign-off** | Client owner ও QA | G1 staging tests, V20 pilot term, fees reconciliation, result accuracy ও issue resolution |
+| **Pilot ও sign-off** | Client owner ও QA | [QA plan](07-qa-pilot-and-acceptance.md)-এর V12 সময়ের targets, V14-এ open critical/high শূন্য, G1 staging tests, live V20, fees reconciliation ও result accuracy। |
 
 Blueprint target অনুযায়ী core service monthly **৯৯.৫% availability**, critical recovery-তে **১৫ মিনিটের data loss সীমা** ও **৪ ঘণ্টার recovery time** planning targets। Restore evidence-এ measured loss, duration, record totals ও follow-up থাকবে। School-এর capacity এবং provider limits evidence থেকে সময়ের হিসাব update হবে।
 
@@ -38,7 +38,18 @@ Data isolation, incorrect published result, lost attendance rows, payment mismat
 | **Monthly** | Restore check, access review, provider usage ও cost, alert owners |
 | **প্রতি term** | Result/fees surge capacity, restore drill, roll-forward readiness, training refresh |
 
-Desk School-এর service owner, onboarding lead, subscription finance contact, privacy/security owner এবং provider contacts থাকবে। Pilot school-এর School Admin, Principal/Owner, Finance approver, Registrar ও Safeguarding lead-এর role current রাখুন। গুরুতর incident-এর জন্য escalation, acknowledgement target ও client communication owner agreed support terms-এ থাকবে।
+Desk School-এর service owner, onboarding lead, subscription finance contact, privacy/security owner এবং provider contacts থাকবে। Pilot school-এর School Admin, Principal, Owner, Finance approver, Registrar ও Safeguarding lead-এর role current রাখুন। Sev1 (ভুল টাকা, ভুল published result, cross-school access, register/quiz answer হারানো বা ব্যাপক outage) হলে সঙ্গে সঙ্গে on-call owner-কে জানাতে হবে। ১৫ মিনিটের মধ্যে সাড়া দিতে হবে। Sev2-তে school hours-এ ১ ঘণ্টার মধ্যে সাড়া দিতে হবে।
+
+পৃ. ৬০-এর ১১টি runbook handover-এ থাকবে। প্রতিটির owner, current version ও drill/evidence link `DVL-015`-এ যাবে।
+
+| ক্ষেত্র | Runbooks |
+|---|---|
+| Recovery ও release | Database failover/restore, single-school restore, release rollback |
+| School data ও money | Wrong published result, money discrepancy, payment provider outage |
+| Service ও security | SMS/push outage, suspected cross-school access, security/privacy event |
+| School operations | Results-season surge, school onboarding/offboarding |
+
+CI evidence-এ main-এ প্রতি commit ও প্রতি release-এ tenant isolation suite এবং প্রতি commit-এ released grading ও fee policy-এর golden files চালানোর ফল থাকবে। Signed build, staging promotion ও rollback records থাকবে `DVL-013`-এ। Policy ও isolation test evidence থাকবে `DVL-014`-এ। PDF পৃ. ৪৮, ৫৯–৬০।
 
 ## Client handover pack
 

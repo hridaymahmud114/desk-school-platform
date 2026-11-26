@@ -15,6 +15,29 @@ Pilot school-এর approved policy ব্যবহার করেই attendanc
 | **Communication** | Template, language, safe preview, opt-in, SMS-only guardian, quiet hours ও emergency channels | Correct guardian একটি notice পান এবং sensitive details app-এর ভিতর থাকে। |
 | **Privacy ও retention** | Purpose, child consent, file retention, support consent, audit, export ও deletion | Role revoke, consent update এবং scoped support session verify হয়। |
 
+## Policy release ও fee collection
+
+Grading বা fee policy approve করার আগে আগের term-এর data-তে নতুন rule চালিয়ে কোন pupil-এর result বা bill কত বদলাত তার report তৈরি হবে। Author ছাড়া অন্য approver report দেখে effective date দেবেন। Grading policy term খোলার সময় lock হবে। পুরোনো result বা issued invoice তার নিজের version ধরে রাখবে। School-এর agreed inputs ও expected outputs (golden files) দিয়ে হিসাব বারবার মেলানো যাবে। PDF পৃ. ১৯, ৩০–৩১, ৫৬, ৫৯।
+
+School fees ও course fees দুটিরই merchant হলো school। টাকা সরাসরি school-এর account-এ যাবে। R2-তে course fees-এর জন্য school চাইলে দ্বিতীয় account দিতে পারবে (CFE-011)। Desk School শুধু নিজের subscription-এর টাকা পায়। Guardian request ও finance approval দুটো থাকলেই school-fee credit course-এ ব্যবহার করা যাবে। Unpaid school fee-তে course চালু থাকবে। Course fee বাকি থাকলে paid period শেষে শুধু সেই course বন্ধ হবে। School record অক্ষত থাকবে। PDF পৃ. ২৭, ৬৩, ১০৪।
+
+Online payment-এ signature, provider-এর সঙ্গে সরাসরি server verification এবং attempt-এর amount, currency ও reference তিনটিই মিলতে হবে। এরপর একবার posting ও receipt হবে। App-এ ফিরে আসা payment-এর প্রমাণ নয়। Invalid confirmation-এ posting হয় না। Unknown status pending থাকে। Bank claim statement-এর সঙ্গে মেলান Finance Officer, reference একবারই ব্যবহার করা যায়। PDF পৃ. ২৯।
+
+<a id="client-inputs"></a>
+## Client inputs ও ছয় সপ্তাহের শুরু
+
+PDF পৃ. ৫২ ও ৫৫ অনুযায়ী নিচের সাতটি input হাতে আসার দিনগুলো নথিভুক্ত হবে। সবগুলো পাওয়ার তারিখই D-18-এর শুরুর দিন। প্রতিটি row-এর দায়িত্ব Desk School-এর। Status বদলালে received date ও evidence reference একসঙ্গে বসবে। Password বা ব্যক্তিগত school data-এর বদলে অনুমোদিত storage-এর reference থাকবে।
+
+| Input | Desk School-এর contact | পাওয়া গেলে যে evidence থাকবে | Status | Received date / evidence |
+|---|---|---|---|---|
+| Scope decision দেওয়ার ক্ষমতাসহ product owner | Client lead | নাম ও scope authority | Pending | — |
+| Pilot school ও registrar, finance, academic lead, teacher ও family access | Pilot coordinator | School ও অংশগ্রহণকারীদের agreed access/schedule | Pending | — |
+| Pilot policies ও rehearsal data | School lead | Data agreement, অনুমোদিত copy-এর reference ও policy samples | Pending | — |
+| Payment ও SMS contract এবং sandbox | Provider account owners | দুই provider-এর contract ও sandbox access confirmation | Pending | — |
+| App store developer accounts | App account owner | Google ও Apple account access confirmation | Pending | — |
+| Data location ও children’s data নিয়ে counsel review | Client legal contact | লিখিত মতামতের reference | Pending | — |
+| Amharic translation review | Client language lead | Native reviewer-এর নাম ও review availability | Pending | — |
+
 ## Provider ও readiness register
 
 | Integration | Baseline | কোন তথ্য বা evidence লাগবে |
