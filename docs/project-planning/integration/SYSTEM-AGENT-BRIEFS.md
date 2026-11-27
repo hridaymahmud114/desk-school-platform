@@ -272,6 +272,56 @@ A10 gradebook, A11 exam, A12 published report। R1-এ scoped teacher, dated ro
 
 **EXM-008** on-screen marks → print ও spreadsheet import। **GRD-007** pilot grades → Grades 1–12। **GRD-010** pilot batch/code → full school batch/release। **APP-012** report card ও receipt verify → certificate এবং প্রতিটি document-এর public field limits। [Doc 03](../03-system-module-and-data-map.md) · [Doc 05](../05-workflows-and-ui-ux.md)
 
+<a id="system-5-prompts"></a>
+**System 5 · পুরো MVP planning prompt**
+
+```text
+You own Desk School System 5 — Exams and Results. Act as a senior software architect and product designer. In one planning run, produce the full System 5 MVP design and its implementation draft. Write in plain Bangla, address the owner as “আপনি”, and keep familiar English technical terms and Feature IDs.
+
+This is planning only. The backend is still being prepared. Read the repo and write only the two Markdown plans below. Leave source code, configuration, dependencies, schema, migrations, Git branches and worktrees untouched. Use synthetic examples and leave credentials unread.
+
+------------------------
+
+1. Read the sources and confirm scope
+
+Use D:\nls-all-projects\Erp-lms as the workspace. Under docs/project-planning/, read Docs 02–08, tracker/features.csv, integration/CTO-HANDOFF.md, DEPENDENCIES.md and INTERFACES.md. Read both System 4 plans in system-plans/04-academics-attendance/ directly. Use the Design Plan's A1/A2 slice 0 and allocation sections and the Implementation Plan's class/roster contract, tasks and consumer notes. Verify the relevant Blueprint v2 pages, including 19, 30–31, 34, 56–59, 82–84 and 106. Cite the source section, PDF page and Feature ID for scope and contracts. Identify repo evidence, owner decisions, assumptions and unresolved inputs. Continue unaffected planning and mark missing backend evidence pending.
+
+Cover all 17 R1 MVP tracker rows, comprising 13 candidates and 4 partials:
+- A10 Assessment and gradebook — GRD-001, GRD-002, GRD-003, GRD-004, GRD-009, GRD-012.
+- A11 Exam management — EXM-001, EXM-002, EXM-005, EXM-007, EXM-008 (partial), EXM-011.
+- A12 Results and report cards — GRD-005, GRD-006, GRD-007 (partial), GRD-010 (partial), APP-012 (partial).
+
+Split each partial into the pilot deliverable and R1 remainder. Preserve tracker release labels. Explicitly track seating and invigilation (EXM-003/004) as R1 backlog and as full G1 V05/V06 evidence dependencies. Keep the A14 Pre-KG narrative sample (GRD-008/021, V06/E2E-02) as a dependency with no numeric marks. In APP-012, distinguish pilot report-card verification from receipt verification owned by Fees, and track certificate verification and agreed field limits in the R1 remainder. Add new proposals only at the owner's request, using S5-PR-nn.
+
+------------------------
+
+2. Create the design and Information Architecture plan
+
+Write docs/project-planning/system-plans/05-exams-results/UI_UX_DESIGN_PLAN.md. Draw a navigation tree and map menu → screen → permitted role/action. Show the entry points and screen hierarchy for exam setup, timetable and candidates, paper attendance and on-screen mark sheets, gradebook, review queue, Principal approval, School Admin report-card release, and Student/Guardian published results. Keep public document verification on its own surface. Reuse the Administration and Student/Guardian workspaces. Label any shared menu placement still awaiting agreement as Proposed. Include key screen layouts, active school/campus/term/class context, reusable components, verified tokens or pending evidence, responsive and accessible behaviour, and empty, denied, stale, loading, error and success states.
+
+Show how a paper uses A2's date-effective roster, stable pupil IDs and roster version, and how A6 subject/group allocation and C3 permission determine who can enter marks. Cite the actual System 4 plan sections. A8 owns placement writes and history, and A1/A2 supplies validated class references and dated roster reads. Record the date and source version used for candidate selection. Show a pupil moving sections after a paper, stale candidate data before submission, and current authorization at each write. Preserve historical exam records. Treat any school-specific eligibility rule or freeze point not established by the sources as an open decision. Keep A11 paper attendance separate from A9 daily attendance.
+
+Show the full journey from exam setup and clash checks through marks, review, approval and release. Distinguish entered zero, missing, absent and exempt. Use school-approved grading rules and policy versions, including weights, rounding and pending-mark behaviour. Subject Teacher submits, Academic Lead reviews or returns, Principal approves, and School Admin generates and releases approved cards with no marks-edit grant. Require independent approval and audit. Published corrections require a reason and Principal approval, then a new version, the prior file retained and a permitted family notice. Apply C1 product scope, C3 child rights and C9 approval, audit and document contracts. Guardians and pupils see only permitted published results. For report cards, the public verification page shows only name, class, term and issue date (Blueprint p. 19).
+
+------------------------
+
+3. Draft the implementation plan
+
+Write docs/project-planning/system-plans/05-exams-results/IMPLEMENTATION_PLAN.md, pending owner review. Start with a reviewable marks-to-report-card slice using one synthetic grade, term and subject, then order the remaining MVP tasks by dependency. Doc 02 lists feat/results/marks-to-report-card as the proposed first branch. Map all 17 Feature IDs to design sections, task, dependency/owner, verified or proposed paths, measurable acceptance and evidence. Include necessary API, permission, data, retry, migration, rollout and rollback decisions. Distinguish plans and fixtures from real repository and integration evidence.
+
+Plan versioned grading policies, prior-term simulation, a different approver and locking when the term opens (PLT-011, V04/X-10). Use school-approved golden files for deterministic recomputation. Record source marks, weights, rounding and policy version. Plan exam-to-gradebook retry safety so the same exam mark does not become a second grade item. Preserve an auditable approved snapshot and publish or reissue from its version. Identify C9 rendering/storage, C4/C5 delivery/display, and the Fees verification dependency. Use selected Desk Learn marks only when both products and the approved class/subject link are active (PRD-007/LRN-115). Keep the school-only result path usable while Desk Learn integration is pending.
+
+Cover V01/V02 tenant, wrong group and child authorization; V04/X-10 policy and approval; V05/E2E-03 deterministic results, pupil/teacher/room clashes and exact-once gradebook results; V06/X-05 English and Amharic cards, Ethiopian and Gregorian dates, verification, batch release and correction history; and V08 correction notices. Record which proofs need later R1 scope, another system, a client-approved policy or a real backend.
+
+------------------------
+
+4. Return one combined review prompt and stop
+
+Return one copy-paste English review prompt that tells the owner to attach both plan files. Include separate design and implementation review sections. Ask the reviewer to trace all 17 Feature IDs, check role-based menu placement and the System 4 roster/allocation dependency, and follow a pupil who moves section after a paper through marks, approval, release and correction. Ask for findings in Bangla with document section, Feature ID, evidence, impact, fix and readiness.
+
+Stop after saving both plans and returning the review prompt. Coding begins only after the owner confirms the backend is ready and explicitly asks to start. When asked, first request a dedicated feature branch from a verified integration base and wait for the owner to confirm the branch and authorize coding on it. Verify the branch and use a separate worktree or checkout for implementation.
+```
+
 #### 06 · Desk Learn
 
 R1 B2 independent course দিয়ে শুরু। B1 Learning Admin, B3 instructor, B4 enrolment, B7 quiz ও B11 course gradebook যুক্ত হবে (LRN-051/062/071/077/006/115)। Learn entitlement লাগে। Independent course-এর জন্য school class লাগে না। Class link-এর জন্য দুই product, dated roster ও explicit school selection লাগে। Native pilot D-01। বাইরের learners R2 (D-21), Moodle connected R2 default, migration ও learning parity R3, পরের standards/features tracker অনুযায়ী।
