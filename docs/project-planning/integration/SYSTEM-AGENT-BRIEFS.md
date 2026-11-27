@@ -2,7 +2,7 @@
 
 **তিনজন System Agent-এর দায়িত্ব।** ১ নম্বর Agent Multi-tenant Platform, ২ নম্বর Agent Identity and Permissions, ৩ নম্বর Agent Student Records and Admissions-এর দায়িত্বে। Project owner প্রত্যেকের সঙ্গে context নিয়ে কথা বলবেন। System Agent নিজের design ও implementation plan review করবেন। Project owner coding-এর দায়িত্ব দিলে সেই Agent বাস্তবায়ন, code review, test ও fix শেষ করবেন। CTO completion report যাচাই করে প্রস্তুত PR merge করবেন। [Report নেওয়ার ক্রম](DEPENDENCIES.md#cto-completion) · [একই student import-এর উদাহরণ](INTERFACES.md#student-walkthrough)
 
-**Prompt দেওয়ার নিয়ম।** প্রতি system-এর জন্য একটি English prompt দিন। Agent প্রথমে context বুঝে সংক্ষেপে জানাবেন, তারপর একই run-এ design plan ও সেই design ধরে draft implementation plan দেবেন। সিদ্ধান্ত বদলে দিতে পারে এমন তথ্য ছাড়া assumption লিখে এগোবেন। কোনো গুরুত্বপূর্ণ উত্তর বাকি থাকলে প্রশ্ন করবেন এবং যে অংশ তার ওপর নির্ভর করে সেটি pending রাখবেন। Agent নিজেই দুই plan-এর জন্য আলাদা review prompt দেবেন। Owner design বদলালে প্রভাবিত কাজগুলো আপডেট করবেন। Implementation শুরু করতে বললে Agent আগে owner-এর কাছে আলাদা feature branch তৈরি বা বরাদ্দের অনুরোধ করবেন। Owner branch নিশ্চিত করে ওই branch-এ coding-এর অনুমতি দিলে Agent আলাদা worktree বা checkout-এ কাজ শুরু করবেন। [Model ও subagent-এর নিয়ম](CTO-HANDOFF.md#model-and-token)
+**Prompt দেওয়ার নিয়ম।** প্রতি system-এর জন্য একটি English prompt দিন। Agent প্রথমে context বুঝে সংক্ষেপে জানাবেন, তারপর একই run-এ design plan ও সেই design ধরে draft implementation plan দেবেন। সিদ্ধান্ত বদলে দিতে পারে এমন তথ্য ছাড়া assumption লিখে এগোবেন। কোনো গুরুত্বপূর্ণ উত্তর বাকি থাকলে প্রশ্ন করবেন এবং যে অংশ তার ওপর নির্ভর করে সেটি pending রাখবেন। Agent নিজেই দুই plan-এর জন্য **একটি combined review prompt** দেবেন, দুই doc path সহ ([নিয়ম](CTO-HANDOFF.md#combined-review-prompt))। Owner design বদলালে প্রভাবিত কাজগুলো আপডেট করবেন। Implementation শুরু করতে বললে Agent আগে owner-এর কাছে আলাদা feature branch তৈরি বা বরাদ্দের অনুরোধ করবেন। Owner branch নিশ্চিত করে ওই branch-এ coding-এর অনুমতি দিলে Agent আলাদা worktree বা checkout-এ কাজ শুরু করবেন। [Model ও subagent-এর নিয়ম](CTO-HANDOFF.md#model-and-token)
 
 Chat ও docs দুজায়গাতেই একটি copy block-এর মধ্যে context, design ও implementation draft এবং review-এর section দিন। প্রতিটি section-এর আগে ফাঁকা লাইন ও একটি ছোট divider রাখুন।
 
@@ -89,7 +89,7 @@ Read the relevant Docs 02–08, tracker/features.csv and integration/INTERFACES.
 
 Act as a senior UI/UX designer, product strategist and feature architect. Audit existing screens, roles, features and journeys. Separate observed findings from assumptions. If the checkout lacks code or screens, mark that evidence as pending.
 
-Write docs/project-planning/system-plans/01-platform/UI_UX_DESIGN_PLAN.md. Define information architecture, flows, screen layouts, reusable components, design tokens, responsive behavior, accessibility and loading, empty, error and success states. Show school selection, provisioning, product changes, confirmation and recovery in the operator console. Define tenant isolation and C3/A8 contracts across the UI, API, files and jobs. Separate the pilot and R1 portions of PRD-006 and PLT-004. Prioritize agreed MVP work as P0/P1/P2 with user value and measurable acceptance criteria. Keep new features as proposals and preserve scope and release labels.
+Write docs/project-planning/system-plans/01-platform/UI_UX_DESIGN_PLAN.md. Define information architecture, flows, screen layouts, reusable components, design tokens, responsive behavior, accessibility and loading, empty, error and success states. Show school selection, provisioning, product changes, confirmation and recovery in the operator console. Define tenant isolation and C3/A8 contracts across the UI, API, files and jobs. Separate the pilot and R1 portions of PRD-006 and PLT-004. Prioritize agreed MVP work as P0/P1/P2 with user value and measurable acceptance criteria. Cite the relevant Blueprint v2 page for each scope claim and preserve tracker release labels and owner-approved MVP exceptions. Add proposals only if the owner requests them, using a system-prefixed ID.
 
 ------------------------
 
@@ -103,7 +103,7 @@ Start with PRD-001, PLT-005, PLT-001 and PLT-002. Verify V01 cross-school isolat
 
 4. Return review prompts and wait
 
-In your reply, provide two copy-paste English review prompts, one for each plan. Reference the file, sections, Feature IDs and evidence. Use wrong-school activation for the design review and the queued import after revocation for the implementation plan review. Ask reviewers for findings in Bangla with impact, a fix and readiness. Tell me which document to attach to each prompt.
+Return one combined English review prompt. Ask me to attach both docs/project-planning/system-plans/01-platform/UI_UX_DESIGN_PLAN.md and docs/project-planning/system-plans/01-platform/IMPLEMENTATION_PLAN.md. Include separate design and implementation review sections. Check how each design requirement and Feature ID traces to a task and acceptance test. Use wrong-school activation for the design review and the queued import after revocation for the implementation plan review. Ask for findings in Bangla with section, Feature ID, evidence, impact, a fix and readiness.
 
 A request to start implementation triggers a branch check. First ask me to create or assign a dedicated feature branch from the verified integration base, and wait for me to confirm the branch and authorize coding on it. Then verify the branch and use a separate worktree or checkout for coding. Plan approval alone is review sign-off.
 ```
@@ -137,7 +137,7 @@ Read the relevant Docs 02–08, tracker/features.csv and integration/INTERFACES.
 
 Act as a senior UI/UX designer, product strategist and feature architect. Audit existing screens, roles, features and journeys. Separate observed findings from assumptions. If the checkout lacks code or screens, mark that evidence as pending.
 
-Write docs/project-planning/system-plans/02-identity/UI_UX_DESIGN_PLAN.md. Define information architecture, flows, screen layouts, reusable components, design tokens, responsive behavior, accessibility and loading, empty, error and success states. Cover invite, sign-in, school and role switching, privileged MFA, delegation, revocation and recovery. Map Registrar import and guardian child switching to actor, action, scope, approval, allow or deny, and the screen state. Separate IAM-002 pilot invites from R1 bulk onboarding. Prioritize agreed MVP work as P0/P1/P2 with user value and measurable acceptance criteria. Keep new features as proposals and preserve scope and release labels.
+Write docs/project-planning/system-plans/02-identity/UI_UX_DESIGN_PLAN.md. Define information architecture, flows, screen layouts, reusable components, design tokens, responsive behavior, accessibility and loading, empty, error and success states. Cover invite, sign-in, school and role switching, privileged MFA, delegation, revocation and recovery. Map Registrar import and guardian child switching to actor, action, scope, approval, allow or deny, and the screen state. Separate IAM-002 pilot invites from R1 bulk onboarding. Prioritize agreed MVP work as P0/P1/P2 with user value and measurable acceptance criteria. Cite the relevant Blueprint v2 page for each scope claim and preserve tracker release labels and owner-approved MVP exceptions. Add proposals only if the owner requests them, using a system-prefixed ID.
 
 ------------------------
 
@@ -151,7 +151,7 @@ Start with IAM-003, IAM-004, IAM-007 and IAM-014. Identify C1 and A8 contracts. 
 
 4. Return review prompts and wait
 
-In your reply, provide two copy-paste English review prompts, one for each plan. Reference the file, sections, Feature IDs and evidence. Use access to the wrong sibling for the design review and a notice queued before a custody restriction for the implementation plan review. Ask reviewers for findings in Bangla with impact, a fix and readiness. Tell me which document to attach to each prompt.
+Return one combined English review prompt. Ask me to attach both docs/project-planning/system-plans/02-identity/UI_UX_DESIGN_PLAN.md and docs/project-planning/system-plans/02-identity/IMPLEMENTATION_PLAN.md. Include separate design and implementation review sections. Check how each design requirement and Feature ID traces to a task and acceptance test. Use access to the wrong sibling for the design review and a notice queued before a custody restriction for the implementation plan review. Ask for findings in Bangla with section, Feature ID, evidence, impact, a fix and readiness.
 
 A request to start implementation triggers a branch check. First ask me to create or assign a dedicated feature branch from the verified integration base, and wait for me to confirm the branch and authorize coding on it. Then verify the branch and use a separate worktree or checkout for coding. Plan approval alone is review sign-off.
 ```
@@ -185,7 +185,7 @@ Read the relevant Docs 02–08, tracker/features.csv and integration/INTERFACES.
 
 Act as a senior UI/UX designer, product strategist and feature architect. Audit existing screens, roles, features and journeys. Separate observed findings from assumptions. If the checkout lacks code or screens, mark that evidence as pending.
 
-Write docs/project-planning/system-plans/03-student-records/UI_UX_DESIGN_PLAN.md. Define information architecture, flows, screen layouts, reusable components, design tokens, responsive behavior, accessibility and loading, empty, error and success states. Show CSV preview, row correction, duplicate review, confirmation, pending guardian access, placement, dated roster and undo. A8 owns student and placement history, C3 owns access grants, and A2 owns class references and the roster read. Treat SIS-003 and CLS-001 as A2 dependencies. Separate SIS-002 pilot contacts from R1 pickup coverage. Prioritize agreed MVP work as P0/P1/P2 with user value and measurable acceptance criteria. Keep new features as proposals and preserve scope and release labels.
+Write docs/project-planning/system-plans/03-student-records/UI_UX_DESIGN_PLAN.md. Define information architecture, flows, screen layouts, reusable components, design tokens, responsive behavior, accessibility and loading, empty, error and success states. Show CSV preview, row correction, duplicate review, confirmation, pending guardian access, placement, dated roster and undo. A8 owns student and placement history, C3 owns access grants, and A2 owns class references and the roster read. Treat SIS-003 and CLS-001 as A2 dependencies. Separate SIS-002 pilot contacts from R1 pickup coverage. Prioritize agreed MVP work as P0/P1/P2 with user value and measurable acceptance criteria. Cite the relevant Blueprint v2 page for each scope claim and preserve tracker release labels and owner-approved MVP exceptions. Add proposals only if the owner requests them, using a system-prefixed ID.
 
 ------------------------
 
@@ -199,7 +199,7 @@ Start with ADM-021, SIS-001, SIS-002 and PLT-014, including the C1/C3/A2 depende
 
 4. Return review prompts and wait
 
-In your reply, provide two copy-paste English review prompts, one for each plan. Reference the file, sections, Feature IDs and evidence. Use the Registrar’s duplicate-review experience for the design review and check that undo preserves an existing student and a later placement for the implementation plan review. Ask reviewers for findings in Bangla with impact, a fix and readiness. Tell me which document to attach to each prompt.
+Return one combined English review prompt. Ask me to attach both docs/project-planning/system-plans/03-student-records/UI_UX_DESIGN_PLAN.md and docs/project-planning/system-plans/03-student-records/IMPLEMENTATION_PLAN.md. Include separate design and implementation review sections. Check how each design requirement and Feature ID traces to a task and acceptance test. Use the Registrar’s duplicate-review experience for the design review and check that undo preserves an existing student and a later placement for the implementation plan review. Ask for findings in Bangla with section, Feature ID, evidence, impact, a fix and readiness.
 
 A request to start implementation triggers a branch check. First ask me to create or assign a dedicated feature branch from the verified integration base, and wait for me to confirm the branch and authorize coding on it. Then verify the branch and use a separate worktree or checkout for coding. Plan approval alone is review sign-off.
 ```
@@ -210,9 +210,61 @@ A request to start implementation triggers a branch check. First ask me to creat
 
 #### 04 · Academics and Attendance
 
-A1/A2 থেকে class/year/section, A5/A6 থেকে routine ও assigned teacher। প্রথম deliverable A9-এ ATT-001–005। Students-এর dated placement থেকে CLS-001 roster নিয়ে assigned teacher offline register দেবেন। Reconnect-এ একবার submission, stale roster review, reason/approval সহ correction → guardian event (V07/V08/V11)। A14-এর GRD-008/021 R1 backlog ও G1 Pre-KG narrative sample রাখতে হবে। Early Years care R2, advanced schedule/attendance নিজ R2/R4 release-এ।
+A1/A2 থেকে class/year/section, A5/A6 থেকে routine ও assigned teacher। প্রথমে A1/A2 slice 0-তে class/section reference ও তারিখ অনুযায়ী roster। তার পর A9-এ ATT-001–005 ও ATT-008। Students-এর dated placement থেকে CLS-001 roster নিয়ে assigned teacher offline register দেবেন। Reconnect-এ একবার submission, stale roster review, reason/approval সহ correction → guardian event (V07/V08/V11)। A14-এর GRD-008/021 R1 backlog ও G1 Pre-KG narrative sample রাখতে হবে। Early Years care R2, advanced schedule/attendance নিজ R2/R4 release-এ।
 
 **PLT-003** এক campus ও দরকারি hierarchy → পুরো hierarchy-র cases। **SET-004** class/section/room → বাকি homeroom/house cases। **SET-005** pilot subject assignment → elective/stream। **CUR-001** pilot subject/unit → objectives, fields ও hours। **CUR-003** basic lesson/material → full lesson-plan fields। **TCH-001** pilot profile/allocation → qualification, grade band ও documents। [Doc 03](../03-system-module-and-data-map.md) · [Doc 07](../07-qa-pilot-and-acceptance.md)
+
+<a id="system-4-prompts"></a>
+**System 4 · পুরো MVP planning prompt**
+
+```text
+You own Desk School System 4 — Academics and Attendance.
+
+This is planning only. The backend is still being prepared. In one run, draft the full System 4 MVP design and implementation plan. Write only the two Markdown documents named below. Use plain Bangla for the plans and report, address the owner as “আপনি”, and keep familiar English technical terms and Feature IDs. Read the relevant repo and docs; leave source code, configuration, dependencies, schema, migrations, Git branches and worktrees untouched. Leave credentials unread. Use the assigned main model for decisions. If useful and supported, delegate only bounded read-only evidence collection to a smaller subagent.
+
+------------------------
+
+1. Understand the context and scope
+
+Read Docs 02–08, tracker/features.csv, integration/CTO-HANDOFF.md, DEPENDENCIES.md, INTERFACES.md, and the latest System 1–3 plans under docs/project-planning/. Verify relevant rules in the local Blueprint v2 PDF. Cite the PDF page and Feature ID for scope. Separate observed evidence, owner decisions, assumptions and open questions. Mark unavailable backend, screen, API and schema evidence as pending. Continue with work unaffected by open questions.
+
+Cover all 29 tracker MVP rows (23 candidates and 6 partials) across these modules:
+- A1 Academic management — SET-001, SET-002, SET-003, SET-011 and PLT-003 (partial).
+- A2 Class and section management — SIS-003, CLS-001, CLS-002 and SET-004 (partial).
+- A3 Subject and course management — SUB-001 and SET-005 (partial).
+- A4 Curriculum and lesson planning — CUR-001 and CUR-003 (both partial).
+- A5 Schedule management — SET-006, SET-007, ACA-001, ACA-002, ACA-004 and ACA-005.
+- A6 Teacher management — HRM-001, TCH-002, TCH-003 and TCH-001 (partial).
+- A9 Attendance and pickup — ATT-001, ATT-002, ATT-003, ATT-004, ATT-005 and ATT-008.
+
+For each partial row, state what the pilot includes and what remains for R1. Preserve release labels. Track A14 Early Years and pickup features in their assigned releases. Include the G1 Pre-KG narrative evidence dependency (GRD-008/021, V06), and flag pilot KG coverage for owner confirmation. Keep SIS-009 outside the initial MVP and distinguish G1 section-change evidence from G2 campus-transfer evidence. Add proposals only at the owner’s request, using S4-PR-nn.
+
+------------------------
+
+2. Create the full design plan
+
+Write docs/project-planning/system-plans/04-academics-attendance/UI_UX_DESIGN_PLAN.md. Audit existing screens and journeys where available. Map school admin, registrar, assigned teacher, substitute, pupil and guardian flows to their actual scope. Cover academic setup, class and subject views, teacher allocation, basic curriculum and lessons, timetable publish and cover, offline roll call, attendance correction and reports. Describe key screen layouts, reusable components, existing design tokens or pending evidence, responsive and accessible behavior, and loading, empty, denied, offline, stale, error and success states.
+
+Give A1/A2 slice 0 its own reviewable section inside the full plan. A1/A2 validate school, campus, year, grade, section and effective date, and serve a date-effective roster from A8 placement. A8 owns placement writes and history. Show how placement changes and voided rows affect the dated roster, with stable IDs and a version. State what Students, Exams and Desk Learn consume. Keep cross-school and wrong-class reads denied. Document the Academic Setup → roster → assigned teaching session → offline register → correction → guardian notice flow. C3 determines permissions and current guardian rights. A9 owns attendance records and correction facts. C4 owns notice dispatch.
+
+------------------------
+
+3. Draft the full implementation plan
+
+Write docs/project-planning/system-plans/04-academics-attendance/IMPLEMENTATION_PLAN.md, pending owner review. Map every MVP Feature ID to a design requirement, dependency, ordered task, verified path or proposed path, expected outcome and acceptance check. Use the existing stack when verified. Include necessary API, data, authorization, offline sync, rollout and rollback decisions. Preserve Pilot and R1 remainder evidence separately.
+
+Make A1/A2 slice 0 the first independently reviewable deliverable. Its minimum class/section reference and roster contract comes before the Students merge. Record Platform → Identity 1a → A1/A2 slice 0 → Students as the integration order. Keep A3–A6 and the full A9 work visible as later tasks in the same plan. Review the slice 0 contract before full System 5 and 6 planning. Use the existing versioned shared fixture. Distinguish fixture checks from real integration evidence.
+
+Include V01/V02 school and role isolation, V11 dated roster and timetable/cover checks, V07/X-01 reconnect-once and stale-roster rejection, V04 history and correction approval, V08 per-event/per-guardian delivery, and V17 device/network checks. Cite V07 for 40 pupils marked in under a minute. Record which evidence depends on a later rollout or another owner. Mark the backend and integration base pending until verified.
+
+------------------------
+
+4. Return one combined review prompt
+
+Return one copy-paste English review prompt asking the owner to attach both plan files. Give it separate design and implementation review sections. Ask the reviewer to trace all 29 Feature IDs to design, task and acceptance evidence, check partial and backlog boundaries, check A8/A1/A2 ownership around placement undo, and follow a stale offline register through retry, correction and guardian notice. Ask for findings in Bangla with the document section, Feature ID, evidence, impact, fix and readiness.
+
+Stop after the plans and review prompt. Plan approval does not authorize implementation. Start coding only after the owner confirms the backend is ready and asks you to start. When asked, first request a dedicated feature branch from the verified integration base. Wait for the owner to confirm the assigned branch and authorize coding on it. Use a separate worktree or checkout after branch verification.
+```
 
 #### 05 · Exams and Results
 
